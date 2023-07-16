@@ -1,0 +1,22 @@
+.header{
+    text-align: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+button{
+    margin-top: 10px;
+    width: 20%;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+}

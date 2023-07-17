@@ -12,7 +12,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("login");
+});
+
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+app.post("/login", (req, res) => {
+    
 });
 
 app.listen(3000, (req, res) => {

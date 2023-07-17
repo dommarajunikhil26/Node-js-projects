@@ -95,7 +95,7 @@ input {
 }
 
 button {
-    margin-top: 50px;
+    margin-top: 35px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
@@ -106,8 +106,32 @@ button {
     cursor: pointer;
 }
 
+.create-account {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.create-account span {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.create-account a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .social {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
 }
 

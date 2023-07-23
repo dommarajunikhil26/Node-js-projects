@@ -7,6 +7,8 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 const { Console } = require('console');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require('mongoose-findorcreate');
 
 const app = express();
 
@@ -36,6 +38,7 @@ loginDataSchema.plugin(passportLocalMongoose, {
     username: 'username'
 });
 
+loginDataSchema.plugin(findOrCreate);
 
 const Login = new mongoose.model("Login", loginDataSchema);
 
@@ -44,10 +47,34 @@ passport.use(Login.createStrategy());
 passport.serializeUser(Login.serializeUser());
 passport.deserializeUser(Login.deserializeUser());
 
+passport.use(new GoogleStrategy({
+    clientID: "1071906013269-inserc9t4gefljnfq519scnr1ikde43e.apps.googleusercontent.com",
+    clientSecret: "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",
+    callbackURL: "http://www.example.com/auth/google/success",
+    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+},
+    function (accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return cb(err, user);
+        });
+    }
+));
+
 
 app.get("/", (req, res) => {
     res.render("login");
 });
+
+app.get("/auth/google", passport.authenticate('google', { scope: ["profile"] }));
+
+app.get("/auth/google/success",
+    passport.authenticate('google', { failureRedirect: '/' }),
+    function (req, res) {
+        // This function will be called after successful authentication
+        res.redirect('/dashboard');
+    }
+);
+
 
 app.get("/register", (req, res) => {
     res.render("register");
@@ -103,8 +130,8 @@ app.post("/logout", (req, res) => {
             res.redirect("/");
         }
     });
-    // res.redirect("/");
 });
+
 
 app.listen(3000, (req, res) => {
     console.log("Server is running at port 3000");

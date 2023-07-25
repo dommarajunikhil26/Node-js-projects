@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    padding: 10px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.body {
+    display: flex;
+    flex: 1;
+}
+
+.vertical-1 {
+    width: 25%;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.vertical-1.collapsed {
+    width: 10%;
+}
+
+.vertical-1 .nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: black;
+}
+
+.vertical-1 .nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.vertical-1 .nav a.icon {
+    order: 1;
+    background: white;
+}
+
+.vertical-1 .myLinks {
+    order: 2;
+    display: block;
+    background-color: black;
+}
+
+.vertical-1 .myLinks a {
+    display: block;
+}
+
+.vertical-2 {
+    width: 75%;
+    transition: width 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.vertical-2.expanded {
+    width: 90%;
+}
+
+.nav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+}
+
+.nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.nav a.icon {
+    background: black;
+}
+
+.nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+/* Style the container to control the width and alignment */
+.search {
+    position: relative;
+}
+
+/* Style the input element */
+.fa-input {
+    padding-left: 30px;
+    /* Add some padding to make space for the icon */
+    font-family: 'FontAwesome';
+    /* Set the Font Awesome font-family */
+}
+
+/* Style the icon inside the input */
+.fa-input::placeholder:before {
+    content: "\f002";
+    /* Set the Unicode value of the Font Awesome icon */
+    font-family: 'FontAwesome';
+    /* Set the Font Awesome font-family */
+    position: absolute;
+    right: 35px;
+    /* Adjust the position of the icon */
+    top: 50%;
+    /* Center the icon vertically */
+    transform: translateY(-50%);
+    color: #888;
+    /* Set the color of the icon */
+}

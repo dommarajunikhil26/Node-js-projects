@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form action="/login" method="post">
+    <h3>Login Here</h3>
+    <% if (typeof message !=='undefined' ) { %>
+        <p class="error-message">
+            <%= message %>
+        </p>
+    <% } %>
+    
+    <label for="username">Username</label>
+    <input type="text" placeholder="Email" id="username" name="username">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="password">
+
+    <button>Log In</button>
+    <div class="register">
+        <a href="/register" class="register-text">Couldn't sign-in? Register Here.</a>
+    </div>
+</form>
+
+<%- include('partials/footer') %>
